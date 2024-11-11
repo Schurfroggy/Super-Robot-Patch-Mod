@@ -1,0 +1,58 @@
+{
+  "Dualcast": {
+    "NAME": "双重释放",
+    "DESCRIPTION": "激发 你最右侧的充能球!M!次。"
+  },
+  "Beam Cell": {
+    "NAME": "光束射线",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 给予 !M! 层 虚弱 和 易伤 。"
+  },
+  "Go for the Eyes": {
+    "NAME": "眼部攻击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果目标敌人的意图是攻击，则给予其 !M! 层 虚弱 ，并获得 1 点 敏捷 。"
+  },
+  "Conserve Battery": {
+    "NAME": "充电",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 在下一回合获得 [B] [B] 。"
+  },
+  "Hello World": {
+    "NAME": "你好，世界",
+    "DESCRIPTION": "在你的回合开始时，增加一张随机普通牌到你的手牌。 NL 这张牌在本回合内耗能变为零。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 在你的回合开始时，增加一张随机普通牌到你的手牌。 NL 这张牌在本回合内耗能变为零。"
+  },
+  "Biased Cognition": {
+    "NAME": "正确认知",
+    "DESCRIPTION": "获得 !M! 点 集中。 NL 在每回合开始时，失去 1 点 集中 。 NL  集中 不会变为负数。"
+  },
+  "Blizzard": {
+    "NAME": "暴雪",
+    "DESCRIPTION": "对所有敌人造成你在本场战斗中 生成 过的 冰霜 充能球总数 !M! 倍的伤害。",
+    "UPGRADE_DESCRIPTION": "对所有敌人造成你在本场战斗中 生成 过的 冰霜 充能球总数 !M! 倍的伤害。 NL  生成 1个 冰霜 充能球。",
+    "EXTENDED_DESCRIPTION": [
+      " NL （造成 !D! 点伤害。）",
+      ""
+    ]
+  },
+  "Steam Power": {
+    "NAME": "超频",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 将一张 *晕眩 放入你的弃牌堆中。"
+  },
+  "Seek": {
+    "NAME": "搜寻",
+    "DESCRIPTION": "从抽牌堆中选择 !M! 张牌放入你的手牌。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 从抽牌堆中选择 !M! 张牌放入你的手牌。 NL 消耗 。"
+  },
+  "Fusion": {
+    "NAME": "聚变",
+    "DESCRIPTION": "生成 !M! 个 等离子 充能球。 NL 抽 2 张牌。"
+  },
+  "Auto Shields": {
+    "NAME": "自动护盾",
+    "DESCRIPTION": "如果你没有格挡，获得 !B! 点 格挡 。 NL 如果你还有空的球位，额外获得 !M! 点 格挡 。"
+  },
+  "Echo Form": {
+    "NAME": "回响形态",
+    "DESCRIPTION": "你每回合打出的第一张牌会打出两次。这张牌每打出或消耗一次，耗能增加1。 NL 虚无 。 NL 无法被逃脱。",
+    "UPGRADE_DESCRIPTION": "你每回合打出的第一张牌会打出两次。这张牌每打出或消耗一次，耗能增加1。 NL 无法被逃脱。。"
+  }
+}

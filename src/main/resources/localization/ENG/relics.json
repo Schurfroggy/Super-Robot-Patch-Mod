@@ -1,0 +1,16 @@
+{
+  "Cracked Core": {
+    "NAME": "Lightning core",
+    "FLAVOR": "The Lightning core is the crazy side of the robot, representing the power of taboo and madness.",
+    "DESCRIPTIONS": [
+      "#yLightning #yCore(Left) :At the start of each combat, #yChannel #b1 #yLightning."
+    ]
+  },
+  "FrozenCore": {
+    "NAME": "Frozen Core",
+    "FLAVOR": "The frozen core is the cool side of the robot, representing the power of kindness and gentleness.",
+    "DESCRIPTIONS": [
+      "#bFrozen #bCore(Right) :If you end your turn with any empty Orb slots, #yChannel #b1 #yFrost."
+    ]
+  }
+}

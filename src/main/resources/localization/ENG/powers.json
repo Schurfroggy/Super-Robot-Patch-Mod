@@ -1,0 +1,17 @@
+{
+  "Hello": {
+    "NAME": "Hello",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b",
+      " random Common cards into your hand. It costs 0 this turn.",
+      " random Common card into your hand. It costs 0 this turn."
+    ]
+  },
+  "Bias": {
+    "NAME": "Correct Cognition",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose #b",
+      " #yFocus. #yFocus will not become negative."
+    ]
+  }
+}

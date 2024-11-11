@@ -1,0 +1,58 @@
+{
+  "Dualcast": {
+    "NAME": "Dualcast",
+    "DESCRIPTION": "Evoke your next Orb !M! times."
+  },
+  "Beam Cell": {
+    "NAME": "Beam Cell",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable and Weak."
+  },
+  "Go for the Eyes": {
+    "NAME": "Go for the Eyes",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, apply !M! Weak and gain 1 Dexterity."
+  },
+  "Conserve Battery": {
+    "NAME": "Charge Battery",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain [B] [B]."
+  },
+  "Hello World": {
+    "NAME": "Hello World",
+    "DESCRIPTION": "At the start of your turn, add a random Common card into your hand. NL It costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, add a random Common card into your hand. NL It costs 0 this turn."
+  },
+  "Biased Cognition": {
+    "NAME": "Correct Cognition",
+    "DESCRIPTION": "Gain !M! Focus. NL At the start of your turn, lose 1 Focus. NL Focus will not become negative."
+  },
+  "Blizzard": {
+    "NAME": "Blizzard",
+    "DESCRIPTION": "Deal damage equal to !M! times the number of Frost Channeled this combat to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "Deal damage equal to !M! times the number of Frost Channeled this combat to ALL enemies. NL Channel 1 Frost.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deals !D! damage.)",
+      ""
+    ]
+  },
+  "Steam Power": {
+    "NAME": "Overclock",
+    "DESCRIPTION": "Draw !M! cards. NL Add a *Dazed into your discard pile."
+  },
+  "Seek": {
+    "NAME": "Seek",
+    "DESCRIPTION": "Put !M! card from your draw pile into your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Put !M! cards from your draw pile into your hand. NL Exhaust."
+  },
+  "Fusion": {
+    "NAME": "Fusion",
+    "DESCRIPTION": "Channel !M! Plasma. NL Draw 2 cards."
+  },
+  "Auto Shields": {
+    "NAME": "Auto-Shields",
+    "DESCRIPTION": "If you have no Block, gain !B! Block. NL If you have empty orbs, gain extra !M! Block."
+  },
+  "Echo Form": {
+    "NAME": "Echo Form",
+    "DESCRIPTION": "Ethereal. NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [G] NL for each time this card is played or exhausted.",
+    "UPGRADE_DESCRIPTION": " NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [G] NL for each time this card is played or exhausted."
+  }
+}
