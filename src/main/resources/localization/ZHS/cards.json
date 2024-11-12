@@ -22,7 +22,7 @@
   },
   "Biased Cognition": {
     "NAME": "正确认知",
-    "DESCRIPTION": "获得 !M! 点 集中。 NL 在每回合开始时，失去 1 点 集中 。 NL  集中 不会变为负数。"
+    "DESCRIPTION": "获得 !M! 点 集中 。 NL 在每回合开始时，失去 1 点 集中 。 NL  集中 不会变为负数。"
   },
   "Blizzard": {
     "NAME": "暴雪",
@@ -51,8 +51,13 @@
     "DESCRIPTION": "如果你没有格挡，获得 !B! 点 格挡 。 NL 如果你还有空的球位，额外获得 !M! 点 格挡 。"
   },
   "Echo Form": {
-    "NAME": "回响形态",
+    "NAME": "噩梦回响形态",
     "DESCRIPTION": "你每回合打出的第一张牌会打出两次。这张牌每打出或消耗一次，耗能增加1。 NL 虚无 。 NL 无法被逃脱。",
     "UPGRADE_DESCRIPTION": "你每回合打出的第一张牌会打出两次。这张牌每打出或消耗一次，耗能增加1。 NL 无法被逃脱。。"
+  },
+  "Rainbow": {
+    "NAME": "彩虹",
+    "DESCRIPTION": "生成 闪电 、 冰霜 、 黑暗 充能球各一个。 NL 获得1个充能球栏位。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "生成 闪电 、 冰霜 、 黑暗 充能球各一个。 NL 获得1个充能球栏位。 NL 消耗 。"
   }
 }

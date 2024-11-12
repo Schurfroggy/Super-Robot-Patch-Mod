@@ -1,18 +1,18 @@
 package SuperRobot.powers;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.blue.Blizzard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.Frost;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.BiasPower;
-import com.megacrit.cardcrawl.powers.FocusPower;
-import com.megacrit.cardcrawl.powers.HelloPower;
+import com.megacrit.cardcrawl.powers.*;
 
 public class PowerPatch {
     //修改你好世界效果为固定增加零费手牌
@@ -55,4 +55,19 @@ public class PowerPatch {
         }
     }
 
+    //todo 增强弹回效果，将下一张牌弹回至手牌中
+    /*@SpirePatch2(
+            clz= ReboundPower.class,
+            method="onAfterUseCard"
+    )
+    public static class ModifyReboundPowerOnAfterUseCard {
+        @SpireInsertPatch(
+                rloc = 6
+        )
+        public static void ModifyEffect(UseCardAction action)
+        {
+            action.reboundCard=false;
+            action.returnToHand=true;
+        }
+    }*/
 }

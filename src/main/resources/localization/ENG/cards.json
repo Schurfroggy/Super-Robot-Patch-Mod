@@ -51,8 +51,13 @@
     "DESCRIPTION": "If you have no Block, gain !B! Block. NL If you have empty orbs, gain extra !M! Block."
   },
   "Echo Form": {
-    "NAME": "Echo Form",
+    "NAME": "Nightmare Echo Form",
     "DESCRIPTION": "Ethereal. NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [G] NL for each time this card is played or exhausted.",
     "UPGRADE_DESCRIPTION": " NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [G] NL for each time this card is played or exhausted."
+  },
+  "Rainbow": {
+    "NAME": "Rainbow",
+    "DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain !M! Orb slots. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain !M! Orb slots. NL Exhaust."
   }
 }

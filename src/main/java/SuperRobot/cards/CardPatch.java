@@ -1,10 +1,12 @@
 package SuperRobot.cards;
 
+import SuperRobot.actions.MultiProgramAction;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.blue.*;
 import com.megacrit.cardcrawl.cards.status.Dazed;
@@ -396,7 +398,108 @@ public class CardPatch {
         }
     }
 
-    
+    //修改彩虹，同时增加一个球位，升级后减一点费用，仍然为消耗
+    @SpirePatch(
+            clz= Rainbow.class,
+            method="use"
+    )
+    public static class ModifyRainbow {
+        @SpirePostfixPatch
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            AbstractDungeon.actionManager.addToBottom(new IncreaseMaxOrbAction(1));
+        }
+    }
+
+    @SpirePatch(
+            clz= Rainbow.class,
+            method="upgrade"
+    )
+    public static class UpgradeRainbow {
+        @SpireInsertPatch(
+                rloc=5
+        )
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.exhaust=true;
+            __instance.cost = __instance.costForTurn = 1;
+            __instance.upgradedCost = true;
+        }
+    }
+
+    //增强核心电涌，改为蓝卡
+    @SpirePatch(
+            clz= CoreSurge.class,
+            method="<ctor>"
+    )
+    public static class ModifyCoreSurge {
+        @SpirePostfixPatch
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.rarity = AbstractCard.CardRarity.UNCOMMON;
+        }
+    }
+
+    //修改狂乱撕扯，改为白卡
+    @SpirePatch(
+            clz= RipAndTear.class,
+            method="<ctor>"
+    )
+    public static class ModifyMadRiposte {
+        @SpirePostfixPatch
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.rarity = AbstractCard.CardRarity.COMMON;
+        }
+    }
+
+    //增强陨石打击，初始费用为4费
+    @SpirePatch(
+            clz= MeteorStrike.class,
+            method="<ctor>"
+    )
+    public static class ModifyMeteorStrike {
+        @SpirePostfixPatch
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.cost = __instance.costForTurn = 4;
+        }
+    }
+
+    //todo 增强Rebound，改为弹回到手牌中
+    /*@SpirePatch(
+            clz= Rebound.class,
+            method="use"
+    )*/
+
+    //修改重编程，改为多重编程，耗X费，降低X点集中，提升X点力量和灵敏，升级后全部变为2X，同时改为消耗
+    @SpirePatch(
+            clz= Reprogram.class,
+            method="<ctor>"
+    )
+    public static class ModifyReprogram {
+        @SpirePostfixPatch
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.cost=__instance.costForTurn=-1;
+        }
+    }
+
+    //this.addToBot(new MulticastAction(p, this.energyOnUse, this.upgraded, this.freeToPlayOnce));
+    @SpirePatch(
+            clz= Reprogram.class,
+            method="use"
+    )
+    public static class ModifyReprogram2 {
+        public static void Replace(AbstractPlayer p,AbstractCard __instance)
+        {
+            AbstractDungeon.actionManager.addToBottom(new MultiProgramAction(p,__instance.energyOnUse,__instance.upgraded,false));
+        }
+    }
+
+
+
+
 
 
 }
