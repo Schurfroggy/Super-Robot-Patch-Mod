@@ -59,5 +59,19 @@
     "NAME": "彩虹",
     "DESCRIPTION": "生成 闪电 、 冰霜 、 黑暗 充能球各一个。 NL 获得1个充能球栏位。 NL 消耗 。",
     "UPGRADE_DESCRIPTION": "生成 闪电 、 冰霜 、 黑暗 充能球各一个。 NL 获得1个充能球栏位。 NL 消耗 。"
+  },
+  "Reprogram": {
+    "NAME": "多重编程",
+    "DESCRIPTION": "失去X点 集中 。 NL 获得X点 力量 。 NL 获得X点 敏捷 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "失去2X点 集中 。 NL 获得2X点 力量 。 NL 获得2X点 敏捷 。 NL 消耗 。"
+  },
+  "Creative AI": {
+    "NAME": "创造性AI",
+    "DESCRIPTION": "在每回合开始时，从三张随机 能力 牌中添加一张到你的手牌。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 在每回合开始时，从三张随机 能力 牌中添加一张到你的手牌。"
+  },
+  "Machine Learning": {
+    "NAME": "机器学习",
+    "DESCRIPTION": "在你的回合结束时，AI会根据你的状态调整参数生成一个充能球。"
   }
 }

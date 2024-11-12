@@ -1,17 +1,16 @@
 package SuperRobot.powers;
 
+import SuperRobot.actions.ChooseOnePowerAction;
+import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Blizzard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.orbs.Frost;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.*;
 
 public class PowerPatch {
@@ -70,4 +69,34 @@ public class PowerPatch {
             action.returnToHand=true;
         }
     }*/
+
+    //增强创造性AI效果，随机一张牌改为三选一，升级后不减费用而是变为固有
+    @SpirePatch(
+            clz=CreativeAIPower.class,
+            method="atStartOfTurn"
+    )
+    public static class ModifyCreativeAIPowerAtStartOfTurn {
+        public static void Replace(AbstractPower __instance)
+        {
+            for(int i = 0; i < __instance.amount; ++i) {
+                AbstractDungeon.actionManager.addToBottom(new ChooseOnePowerAction());
+            }
+        }
+    }
+
+    @SpirePatch(
+            clz=CreativeAIPower.class,
+            method="updateDescription"
+    )
+    public static class ModifyCreativeAIPowerAtStartOfTurn2 {
+        public static void Replace(AbstractPower __instance)
+        {
+            String[] DESCRIPTIONS = ((PowerStrings)ReflectionHacks.getPrivateStatic(CreativeAIPower.class, "powerStrings")).DESCRIPTIONS;
+            if (__instance.amount > 1) {
+                __instance.description = DESCRIPTIONS[0] + __instance.amount + DESCRIPTIONS[2];
+            } else {
+                __instance.description = DESCRIPTIONS[0] + __instance.amount + DESCRIPTIONS[1];
+            }
+        }
+    }
 }

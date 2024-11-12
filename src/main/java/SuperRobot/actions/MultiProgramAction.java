@@ -40,11 +40,9 @@ public class MultiProgramAction extends AbstractGameAction {
         }
 
         if (effect > 0) {
-            for(int i = 0; i < effect - 1; ++i) {
-                this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, -effect), -effect));
-                this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
-                this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
-            }
+            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, -effect), -effect));
+            this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
+            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
 
             if (!this.freeToPlayOnce) {
                 this.p.energy.use(EnergyPanel.totalCount);

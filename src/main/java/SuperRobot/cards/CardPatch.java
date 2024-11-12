@@ -1,6 +1,7 @@
 package SuperRobot.cards;
 
 import SuperRobot.actions.MultiProgramAction;
+import SuperRobot.powers.MachineLearningPower;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -50,7 +51,7 @@ public class CardPatch {
         }
     }
 
-    //增强beam cell，同时给予一层虚弱，升级后变为两层虚弱，并修改描述
+    //增强beam cell，同时给予一层虚弱，升级后变为两层虚弱
     @SpirePatch(
             clz= BeamCell.class,
             method="use",
@@ -64,7 +65,7 @@ public class CardPatch {
         }
     }
 
-    //增强go for the eyes，同时高提升自身1层灵巧
+    //增强go for the eyes，同时提升自身1层敏捷
     @SpirePatch(
             clz= GoForTheEyes.class,
             method="use"
@@ -120,8 +121,7 @@ public class CardPatch {
         }
     }
 
-    //增强hello world，升级后费用变为零
-    //你好世界发出的牌首轮为零费(在power中修改)
+    //增强hello world，升级后费用变为零,你好世界发出的牌首轮为零费
     @SpirePatch(
             clz= HelloWorld.class,
             method="upgrade"
@@ -378,7 +378,6 @@ public class CardPatch {
         }
     }
 
-    //由于EchoForm中没有显示地复写triggerOnExhaust方法，无法直接Override，需要对原EchoForm类的该方法进行补充
     @SpirePatch(
             clz = EchoForm.class,
             method = "<ctor>"
@@ -472,7 +471,7 @@ public class CardPatch {
             method="use"
     )*/
 
-    //修改重编程，改为多重编程，耗X费，降低X点集中，提升X点力量和灵敏，升级后全部变为2X，同时改为消耗
+    //修改重编程，改为多重编程，消耗，耗X费，降低X点集中，提升X点力量和敏捷，升级后全部变为2X
     @SpirePatch(
             clz= Reprogram.class,
             method="<ctor>"
@@ -481,21 +480,88 @@ public class CardPatch {
         @SpirePostfixPatch
         public static void modifyEffect(AbstractCard __instance)
         {
-            __instance.cost=__instance.costForTurn=-1;
+            __instance.cost = -1;
+            __instance.exhaust=true;
         }
     }
 
-    //this.addToBot(new MulticastAction(p, this.energyOnUse, this.upgraded, this.freeToPlayOnce));
-    @SpirePatch(
+    @SpirePatch2(
             clz= Reprogram.class,
             method="use"
     )
     public static class ModifyReprogram2 {
-        public static void Replace(AbstractPlayer p,AbstractCard __instance)
+        @SpirePrefixPatch
+        public static SpireReturn<?> ModifyEffect(AbstractPlayer p,AbstractMonster m, AbstractCard __instance)
         {
-            AbstractDungeon.actionManager.addToBottom(new MultiProgramAction(p,__instance.energyOnUse,__instance.upgraded,false));
+            AbstractDungeon.actionManager.addToBottom(new MultiProgramAction(p,__instance.energyOnUse,__instance.upgraded,__instance.freeToPlayOnce));
+            return SpireReturn.Return();
         }
     }
+
+    @SpirePatch(
+            clz= Reprogram.class,
+            method="upgrade"
+    )
+    public static class ModifyReprogram3 {
+        @SpireInsertPatch(
+                rloc=3
+        )
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.rawDescription = ((CardStrings) ReflectionHacks.getPrivateStatic(Reprogram.class, "cardStrings")).UPGRADE_DESCRIPTION;
+            __instance.initializeDescription();
+        }
+    }
+
+    //增强创造性AI，三选一能力牌而不是随机，升级后不减费用而是变为固有
+    @SpirePatch(
+            clz= CreativeAI.class,
+            method="upgrade"
+    )
+    public static class ModifyCreativeAI {
+        @SpireInsertPatch(
+                rloc=2
+        )
+        public static SpireReturn<?> modifyEffect(AbstractCard __instance)
+        {
+            __instance.isInnate=true;
+            __instance.rawDescription = ((CardStrings) ReflectionHacks.getPrivateStatic(CreativeAI.class, "cardStrings")).UPGRADE_DESCRIPTION;
+            __instance.initializeDescription();
+            return SpireReturn.Return();
+        }
+    }
+
+    //修改机器学习，回合结束时，根据AI结果生成一个充能球。升级后无固有，费用减一
+    @SpirePatch2(
+            clz= MachineLearning.class,
+            method="use"
+    )
+    public static class ModifyMachineLearning {
+        @SpirePrefixPatch
+        public static SpireReturn<?> ModifyEffect(AbstractPlayer p,AbstractMonster m,AbstractCard __instance)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,new MachineLearningPower(p,__instance.magicNumber)));
+            return SpireReturn.Return();
+        }
+    }
+
+    @SpirePatch(
+            clz=MachineLearning.class,
+            method="upgrade"
+    )
+    public static class ModifyMachineLearning2 {
+        @SpireInsertPatch(
+                rloc=2
+        )
+        public static SpireReturn<?> ModifyEffect(AbstractCard __instance)
+        {
+            __instance.cost=__instance.costForTurn=0;
+            __instance.upgraded=true;
+            return SpireReturn.Return();
+        }
+    }
+
+
 
 
 

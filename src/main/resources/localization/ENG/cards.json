@@ -59,5 +59,19 @@
     "NAME": "Rainbow",
     "DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain !M! Orb slots. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain !M! Orb slots. NL Exhaust."
+  },
+  "Reprogram": {
+    "NAME": "Multi-Program",
+    "DESCRIPTION": "Lose X Focus. NL Gain X Strength. NL Gain X Dexterity. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Lose 2X Focus. NL Gain 2X Strength. NL Gain 2X Dexterity. NL Exhaust."
+  },
+  "Creative AI": {
+    "NAME": "Creative AI",
+    "DESCRIPTION": "At the start of your turn, add #b1 of #b3 random #yPower cards and add the chosen card into your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, add #b1 of #b3 random #yPower cards and add the chosen card into your hand."
+  },
+  "Machine Learning": {
+    "NAME": "Machine Learning",
+    "DESCRIPTION": "At the end of your turn, the AI will adjust the parameters based on your state to channel 1 random Orb."
   }
 }

@@ -13,5 +13,20 @@
       "At the start of your turn, lose #b",
       " #yFocus. #yFocus will not become negative."
     ]
+  },
+  "Creative AI": {
+    "NAME": "Creative AI",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b1 of #b3 random #yPower cards ",
+      " time and add the chosen card into your hand.",
+      " times and add the chosen card into your hand."
+    ]
+  },
+  "Machine": {
+    "NAME": "Machine Learning",
+    "DESCRIPTIONS": [
+      "At the end of your turn, the AI will adjust the parameters based on your state to channel 1 random Orb. #b",
+      " times in total."
+    ]
   }
 }
