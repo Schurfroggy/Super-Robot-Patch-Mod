@@ -72,6 +72,21 @@
   },
   "Machine Learning": {
     "NAME": "机器学习",
-    "DESCRIPTION": "在你的回合结束时，AI会根据你的状态调整参数生成一个充能球。"
+    "DESCRIPTION": "在你的回合结束时，AI会根据你的状态调整参数 生成 一个充能球。"
+  },
+  "Amplify": {
+    "NAME": "增幅",
+    "DESCRIPTION": "你的下一张 能力牌 会打出两次。",
+    "UPGRADE_DESCRIPTION": "你的下 !M! 张 能力牌 会打出两次。"
+  },
+  "SuperRobot:Frost Protection": {
+    "NAME": "冰霜保护",
+    "DESCRIPTION": "每当你受到攻击伤害时， 生成 一个 冰霜 充能球。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 每当你受到攻击伤害时， 生成 一个 冰霜 充能球。"
+  },
+  "SuperRobot:Machine Awakening": {
+    "NAME": "机器觉醒",
+    "DESCRIPTION": "失去所有的 机器学习 ，获得双倍的 集中 。每回合结束时根据AI结果 生成 充能球上限数量的充能球。 NL 虚无 。",
+    "UPGRADE_DESCRIPTION": "失去所有的 机器学习 ，获得双倍的 集中 。每回合结束时根据AI结果 生成 充能球上限数量的充能球。"
   }
 }

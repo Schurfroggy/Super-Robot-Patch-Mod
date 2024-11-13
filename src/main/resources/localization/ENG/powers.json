@@ -22,11 +22,30 @@
       " times and add the chosen card into your hand."
     ]
   },
-  "Machine": {
+  "SuperRobot:Machine": {
     "NAME": "Machine Learning",
     "DESCRIPTIONS": [
       "At the end of your turn, the AI will adjust the parameters based on your state to channel 1 random Orb. #b",
       " times in total."
     ]
+  },
+  "Amplify": {
+    "NAME": "Amplify",
+    "DESCRIPTIONS": [
+      "Your next #yPower card is played twice.",
+      "Your next ",
+      " #yPower cards are played twice."
+    ]
+  },
+  "SuperRobot:FrostProtection": {
+    "NAME": "Frost Protection",
+    "DESCRIPTIONS": [
+      "Whenever you receive attack damage, #yChannel #b",
+      " #yFrost."
+    ]
+  },
+  "SuperRobot:Machine Awakening Power": {
+    "NAME": "Machine Awakening",
+    "DESCRIPTION": "At the end of your turn, the AI will channel many random Orb according to your status and max orbs."
   }
 }

@@ -73,5 +73,20 @@
   "Machine Learning": {
     "NAME": "Machine Learning",
     "DESCRIPTION": "At the end of your turn, the AI will adjust the parameters based on your state to channel 1 random Orb."
+  },
+  "Amplify": {
+    "NAME": "Amplify",
+    "DESCRIPTION": "Your next Power card is played twice.",
+    "UPGRADE_DESCRIPTION": "Your next !M! Power cards are played twice."
+  },
+  "SuperRobot:Frost Protection": {
+    "NAME": "Frost Protection",
+    "DESCRIPTION": "Whenever you receive unblocked attack damage, Channel !M! Frost.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you receive unblocked attack damage, Channel !M! Frost."
+  },
+  "SuperRobot:Machine Awakening": {
+    "NAME": "Machine Awakening",
+    "DESCRIPTION": "Ethereal. NL Lost all Machine Learning, gain double Focus. At the end of your turn, the AI will channel many random Orb according to your status and max orbs.",
+    "UPGRADE_DESCRIPTION": "Lost all Machine Learning, gain double Focus. At the end of your turn, the AI will channel many random Orb according to your status and max orbs."
   }
 }

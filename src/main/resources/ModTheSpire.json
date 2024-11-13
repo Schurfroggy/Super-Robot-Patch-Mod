@@ -2,7 +2,7 @@
   "modid": "SuperRobotMod",
   "name": "不故障机器人Mod",
   "author_list": ["SchurFroggy"],
-  "description": "巅峰鸡煲-不故障机器人！\n这是我的第一个mod，如果有任何建议或者bug请帮助反馈，谢谢！",
+  "description": "不故障机器人Mod\n只对机器人的部分卡牌遗物和能力进行了小幅度修改。这是我的第一个mod，如果有任何建议或者bug请反馈，谢谢！",
   "version": "1.0.0",
   "sts_version": "3-10-2023",
   "mts_version": "3.30.3",

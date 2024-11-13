@@ -2,10 +2,7 @@ package SuperRobot.powers;
 
 import SuperRobot.actions.ChooseOnePowerAction;
 import basemod.ReflectionHacks;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,7 +11,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.*;
 
 public class PowerPatch {
-    //修改你好世界效果为固定增加零费手牌
+    //增强你好世界效果为固定增加零费手牌
     @SpirePatch(
             clz= HelloPower.class,
             method="atStartOfTurn"
@@ -35,7 +32,7 @@ public class PowerPatch {
         }
     }
 
-    //修改偏差认知效果，当集中为零时停止扣除
+    //增强偏差认知效果，当集中为零时停止扣除
     @SpirePatch(
             clz= BiasPower.class ,
             method="atStartOfTurn"
@@ -97,6 +94,19 @@ public class PowerPatch {
             } else {
                 __instance.description = DESCRIPTIONS[0] + __instance.amount + DESCRIPTIONS[1];
             }
+        }
+    }
+
+    //增强增幅效果，跨回合依旧生效
+    @SpirePatch2(
+            clz=AmplifyPower.class,
+            method="atEndOfTurn"
+    )
+    public static class ModifyAmplifyPowerAtEndOfTurn {
+        @SpirePrefixPatch
+        public static SpireReturn<?> Replace(boolean isPlayer)
+        {
+            return SpireReturn.Return();
         }
     }
 }

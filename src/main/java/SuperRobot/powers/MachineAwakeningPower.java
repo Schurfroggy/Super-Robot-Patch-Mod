@@ -2,6 +2,7 @@ package SuperRobot.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -12,26 +13,24 @@ import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.orbs.Plasma;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class MachineLearningPower extends AbstractPower {
-    public static final String POWER_ID = "SuperRobot:Machine";
+public class MachineAwakeningPower extends AbstractPower {
+    public static final String POWER_ID = "SuperRobot:Machine Awakening Power";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     private static final String NAME = powerStrings.NAME;
     private static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
     private final double[] weights=new double[4];
     private final double[] flags=new double[4];
-
     private int lastHealth = 0;
-    private  int lastDamage=0;
-    public MachineLearningPower(AbstractPlayer owner, int Amount) {
+    public MachineAwakeningPower(AbstractCreature owner)
+    {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.type = PowerType.BUFF;
 
-        this.amount = Amount;
-        String path128 = "img/powers/MachineLearningPower84.png";
-        String path48 = "img/powers/MachineLearningPower32.png";
+        this.amount = -1;
+        String path128 = "img/powers/MachineAwakeningPower84.png";
+        String path48 = "img/powers/MachineAwakeningPower32.png";
         this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 32, 32);
 
@@ -53,74 +52,65 @@ public class MachineLearningPower extends AbstractPower {
     }
 
     public void updateDescription(){
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0];
     }
 
     public void atEndOfTurn(boolean isPlayer){
-        calculateWeight();
-        switch (chooseBall()){
-            case 0:{
-                for(int i=0;i<amount;i++)
+        int maxOrbs= AbstractDungeon.player.maxOrbs;
+        for(int i=0;i<maxOrbs;i++){
+            calculateWeight();
+            switch (chooseBall()){
+                case 0:{
                     AbstractDungeon.player.channelOrb(new Lightning());
-                weights[0]-=flags[0];
-                flags[0]+=0.5;
-                flags[1]-=0.25;
-                flags[2]-=0.25;
-                flags[3]-=0.25;
-                break;
-            }
-            case 1:{
-                for(int i=0;i<amount;i++)
+                    weights[0]-=flags[0];
+                    flags[0]+=0.5;
+                    flags[1]-=0.25;
+                    flags[2]-=0.25;
+                    flags[3]-=0.25;
+                    break;
+                }
+                case 1:{
                     AbstractDungeon.player.channelOrb(new Frost());
-                weights[1]-=flags[1];
-                flags[0]-=0.25;
-                flags[1]+=0.5;
-                flags[2]-=0.25;
-                flags[3]-=0.25;
-                break;
-            }
-            case 2:{
-                for(int i=0;i<amount;i++)
+                    weights[1]-=flags[1];
+                    flags[0]-=0.25;
+                    flags[1]+=0.5;
+                    flags[2]-=0.25;
+                    flags[3]-=0.25;
+                    break;
+                }
+                case 2:{
                     AbstractDungeon.player.channelOrb(new Dark());
-                weights[2]-=flags[2];
-                flags[0]-=0.25;
-                flags[1]-=0.25;
-                flags[2]+=0.5;
-                flags[3]-=0.25;
-                break;
-            }
-            case 3:{
-                for(int i=0;i<amount;i++)
+                    weights[2]-=flags[2];
+                    flags[0]-=0.25;
+                    flags[1]-=0.25;
+                    flags[2]+=0.5;
+                    flags[3]-=0.25;
+                    break;
+                }
+                case 3:{
                     AbstractDungeon.player.channelOrb(new Plasma());
-                weights[3]-=flags[3];
-                flags[0]-=0.25;
-                flags[1]-=0.25;
-                flags[2]-=0.25;
-                flags[3]+=0.5;
-                break;
+                    weights[3]-=flags[3];
+                    flags[0]-=0.25;
+                    flags[1]-=0.25;
+                    flags[2]-=0.25;
+                    flags[3]+=0.5;
+                    break;
+                }
             }
         }
     }
 
     private void  calculateWeight(){
         AbstractPlayer p= AbstractDungeon.player;
-        if(p.damagedThisCombat-this.lastDamage>p.currentBlock){
-            weights[0]+=0.5;
-            weights[2]+=0.5;
-        }
         if(p.currentHealth<lastHealth){
             weights[0]-=0.5;
             weights[1]+=0.5;
             weights[2]-=0.5;
-        }else if(p.currentHealth==lastHealth){
-            weights[0]+=0.5;
-            weights[1]-=0.5;
-            weights[2]+=0.5;
         }
         if(p.currentBlock>10)
             weights[1]+=0.25;
-        if(p.maxOrbs>=4)
-            weights[2]-=0.5;
+        if(p.currentBlock>=30)
+            weights[1]-=1.0;
         if(p.hasPower("Focus")){
             weights[0]+=0.25;
             weights[1]+=0.5;
@@ -132,16 +122,12 @@ public class MachineLearningPower extends AbstractPower {
             weights[2]+=0.5;
             weights[3]+=0.25;
         }
-        if(p.hasEmptyOrb()){
-            weights[3]+=0.5;
-        }
         if(p.energy.energy==0){
             weights[3]+=0.5;
         }else{
             weights[3]-=0.25;
         }
         this.lastHealth=p.currentHealth;
-        this.lastDamage+=p.damagedThisCombat;
     }
 
     private int chooseBall(){

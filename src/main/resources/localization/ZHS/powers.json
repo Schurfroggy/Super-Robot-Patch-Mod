@@ -22,11 +22,30 @@
       " 次。"
     ]
   },
-  "Machine": {
+  "SuperRobot:Machine": {
     "NAME": "机器学习",
     "DESCRIPTIONS": [
       "在你的回合结束时，AI会根据你的状态调整参数生成一个充能球。 共 #b",
       " 次。"
     ]
+  },
+  "Amplify": {
+    "NAME": "增幅",
+    "DESCRIPTIONS": [
+      "你的下一张 #y能力牌 会打出两次。",
+      "你的下 ",
+      " 张 #y能力牌 会打出两次。"
+    ]
+  },
+  "SuperRobot:FrostProtection": {
+    "NAME": "冰霜保护",
+    "DESCRIPTIONS": [
+      "当你受到 #y攻击 伤害时， #y生成 #b",
+      " 个 #y冰霜 充能球。"
+    ]
+  },
+  "SuperRobot:Machine Awakening Power": {
+    "NAME": "机器觉醒",
+    "DESCRIPTION": "每回合结束时根据AI结果生成充能球上限数量的充能球。"
   }
 }

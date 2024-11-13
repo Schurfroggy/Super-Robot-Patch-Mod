@@ -153,7 +153,7 @@ public class CardPatch {
         }
     }
 
-    //增强暴雪，初始改为造成冰球数量的4倍伤害，升级后造成五倍，并生成1颗冰球
+    //修改暴雪，初始改为造成冰球数量的4倍伤害，升级后造成五倍，并生成1颗冰球，但是变为金卡
     @SpirePatch(
             clz= Blizzard.class,
             method="<ctor>"
@@ -164,6 +164,7 @@ public class CardPatch {
         {
             __instance.baseMagicNumber = 4;
             __instance.magicNumber = __instance.baseMagicNumber;
+            __instance.rarity=AbstractCard.CardRarity.RARE;
         }
     }
 
@@ -359,6 +360,8 @@ public class CardPatch {
         {
             AbstractCard c = new EchoForm();
             c.cost =__instance.cost;
+            if(__instance.upgraded)
+                c.upgrade();
             return c;
         }
     }
@@ -531,12 +534,24 @@ public class CardPatch {
         }
     }
 
-    //修改机器学习，回合结束时，根据AI结果生成一个充能球。升级后无固有，费用减一
+    //修改机器学习，回合结束时，根据AI结果生成一个充能球。升级后无固有，费用减一，改为蓝卡
+    @SpirePatch2(
+            clz= MachineLearning.class,
+            method="<ctor>"
+    )
+    public static class ModifyMachineLearning {
+        @SpirePostfixPatch
+        public static void ModifyEffect(AbstractCard __instance)
+        {
+            __instance.rarity=AbstractCard.CardRarity.UNCOMMON;
+        }
+    }
+
     @SpirePatch2(
             clz= MachineLearning.class,
             method="use"
     )
-    public static class ModifyMachineLearning {
+    public static class ModifyMachineLearning2 {
         @SpirePrefixPatch
         public static SpireReturn<?> ModifyEffect(AbstractPlayer p,AbstractMonster m,AbstractCard __instance)
         {
@@ -549,17 +564,18 @@ public class CardPatch {
             clz=MachineLearning.class,
             method="upgrade"
     )
-    public static class ModifyMachineLearning2 {
+    public static class ModifyMachineLearning3 {
         @SpireInsertPatch(
                 rloc=2
         )
         public static SpireReturn<?> ModifyEffect(AbstractCard __instance)
         {
             __instance.cost=__instance.costForTurn=0;
-            __instance.upgraded=true;
+            __instance.upgradedCost=true;
             return SpireReturn.Return();
         }
     }
+
 
 
 

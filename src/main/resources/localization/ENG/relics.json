@@ -10,7 +10,7 @@
     "NAME": "Frozen Core",
     "FLAVOR": "The frozen core is the cool side of the robot, representing the power of kindness and gentleness.",
     "DESCRIPTIONS": [
-      "#bFrozen #bCore(Right) :If you end your turn with any empty Orb slots, #yChannel #b1 #yFrost."
+      "#bFrozen #bCore(Right) :If you end your turn with any empty Orb slots and you don't have #yFocus, #yChannel #b1 #yFrost."
     ]
   }
 }

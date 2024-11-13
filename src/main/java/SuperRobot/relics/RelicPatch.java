@@ -2,12 +2,14 @@ package SuperRobot.relics;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.FrozenCore;
 
 
 public class RelicPatch {
-    //修改冰冻核心为初始遗物
+    //修改冰冻核心为初始遗物，效果变为在剩余球位且无集中时生成一个冰霜充能球
     @SpirePatch(
             clz = FrozenCore.class,
             method = "<ctor>"
@@ -22,4 +24,21 @@ public class RelicPatch {
             __instance.tier = AbstractRelic.RelicTier.STARTER;
         }
     }
+
+    @SpirePatch(
+            clz=FrozenCore.class,
+            method="onPlayerEndTurn"
+    )
+    public static class ModifyFrozenCoreOnPlayerEndTurn
+    {
+        public static void Replace(AbstractRelic __instance)
+        {
+            if (AbstractDungeon.player.hasEmptyOrb()&&!AbstractDungeon.player.hasPower("Focus")) {
+                __instance.flash();
+                AbstractDungeon.player.channelOrb(new Frost());
+            }
+        }
+    }
+
+
 }
