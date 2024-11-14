@@ -87,16 +87,16 @@
   },
   "Recycle": {
     "NAME": "Recycle",
-    "DESCRIPTION": "Exhaust a card. NL Gain [B] equal to its cost. NL Invalid for Nightmare Echo."
+    "DESCRIPTION": "Exhaust a card. NL Gain [B] equal to its cost. NL Invalid for *Nightmare *Echo."
   },
   "SuperRobot:Snow Storm": {
     "NAME": "Snow Storm",
     "DESCRIPTION": "Get into Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform into your draw pile.",
-    "UPGRADE_DESCRIPTION": "Enter the Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform+ into your draw pile."
+    "UPGRADE_DESCRIPTION": "Get into the Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform+ into your draw pile."
   },
   "SuperRobot:Weather Transform": {
     "NAME": "Weather Transform",
-    "DESCRIPTION": "Transform your Weather. NL If Exhausted, ClearUp."
+    "DESCRIPTION": "Transform your Weather. NL If Exhausted, Clear Up."
   },
   "Storm": {
     "NAME": "Storm",

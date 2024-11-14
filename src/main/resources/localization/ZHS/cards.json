@@ -87,7 +87,7 @@
   },
   "Recycle": {
     "NAME": "回收",
-    "DESCRIPTION": "消耗 一张牌。 NL 获得与其耗能相等的 [B] 。 NL 对噩梦回响形态无效。"
+    "DESCRIPTION": "消耗 一张牌。 NL 获得与其耗能相等的 [B] 。 NL 对 *噩梦回响形态 无效。"
   },
   "SuperRobot:Snow Storm": {
     "NAME": "雪暴",

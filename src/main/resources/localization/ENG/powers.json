@@ -51,15 +51,15 @@
   "SuperRobot:SnowStorm": {
     "NAME": "Weather:Snow Storm",
     "DESCRIPTIONS": [
-      "All #yFrost effectiveness increase #b ",
+      "All #yFrost effectiveness increase #b",
       " .Whenever you play a #yPower card, #yChannel #b",
       " #yFrost. #yLightning effectiveness decrease. AI now prefers to #yChannel #yFrost."
     ]
   },
   "Storm": {
-    "NAME": "Storm",
+    "NAME": "Weather:Storm",
     "DESCRIPTIONS": [
-      "All #yLightning effectiveness increase #b ",
+      "All #yLightning effectiveness increase #b",
       " .Whenever you play a #yPower card, #yChannel #b",
       " #yLightning. #yFrost effectiveness decrease. AI now prefers to #yChannel #yLightning."
     ]
