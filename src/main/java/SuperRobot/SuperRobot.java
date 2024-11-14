@@ -55,7 +55,7 @@ public class SuperRobot implements  EditStringsSubscriber,EditCardsSubscriber, E
         BaseMod.addKeyword("机器学习",new String[]{"机器学习"},"在你的回合结束时，AI会根据你的状态调整参数生成充能球。");
         BaseMod.addKeyword("Weather",new String[]{"weather"},"You can only have one type of weather at the same time. Weather will increase or decrease the effectiveness of specific orb.");
         BaseMod.addKeyword("天气",new String[]{"天气"},"你只能同时拥有一种天气。天气会增加或削弱特定充能球的效果。");
-        BaseMod.addKeyword("Clear Up",new String[]{"clear up"},"Become sunny:)");
+        BaseMod.addKeyword("Clear Up",new String[]{"clearup"},"Become sunny:)");
         BaseMod.addKeyword("放晴",new String[]{"放晴"},"退出所有天气。");
     }
 }

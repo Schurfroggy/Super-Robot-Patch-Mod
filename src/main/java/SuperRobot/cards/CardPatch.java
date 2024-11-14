@@ -2,8 +2,12 @@ package SuperRobot.cards;
 
 import SuperRobot.actions.MultiProgramAction;
 import SuperRobot.actions.NewRecycleAction;
+import SuperRobot.actions.RemoveWeatherAction;
+import SuperRobot.effect.WeatherEffect;
 import SuperRobot.powers.MachineLearningPower;
+import SuperRobot.powers.SnowStormPower;
 import basemod.ReflectionHacks;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -13,12 +17,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.blue.*;
 import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import javassist.*;
 
 public class CardPatch {
@@ -142,7 +148,9 @@ public class CardPatch {
             method="upgrade"
     )
     public static class UpgradeHelloWorld {
-        @SpirePostfixPatch
+        @SpireInsertPatch(
+                rloc=3
+        )
         public static void modifyCost(AbstractCard __instance)
         {
             __instance.cost = 0;
@@ -152,7 +160,7 @@ public class CardPatch {
     }
 
     //增强冰川，升级后改为生成三个冰球
-    @SpirePatch(
+    /*@SpirePatch(
             clz= Glacier.class,
             method="upgrade"
     )
@@ -166,7 +174,7 @@ public class CardPatch {
             __instance.magicNumber = __instance.baseMagicNumber;
             __instance.isMagicNumberModified=true;
         }
-    }
+    }*/
 
     //修改暴雪，初始改为造成冰球数量的4倍伤害，升级后造成五倍，并生成1颗冰球，但是变为金卡
     @SpirePatch(
@@ -201,11 +209,12 @@ public class CardPatch {
             method="upgrade"
     )
     public static class UpgradeBlizzard {
-        @SpirePostfixPatch
+        @SpireInsertPatch(
+                rloc=3
+        )
         public static void modifyBlizzardDescription(AbstractCard __instance)
         {
             __instance.rawDescription = ((CardStrings) ReflectionHacks.getPrivateStatic(Blizzard.class, "cardStrings")).UPGRADE_DESCRIPTION;
-            //__instance.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             __instance.initializeDescription();
         }
     }
@@ -471,7 +480,7 @@ public class CardPatch {
     }
 
     //增强陨石打击，初始费用为4费
-    @SpirePatch(
+    /*@SpirePatch(
             clz= MeteorStrike.class,
             method="<ctor>"
     )
@@ -481,13 +490,7 @@ public class CardPatch {
         {
             __instance.cost = __instance.costForTurn = 4;
         }
-    }
-
-    //todo 增强Rebound，改为弹回到手牌中
-    /*@SpirePatch(
-            clz= Rebound.class,
-            method="use"
-    )*/
+    }*/
 
     //修改重编程，改为多重编程，消耗，耗X费，降低X点集中，提升X点力量和敏捷，升级后全部变为X+1，变为金卡
     @SpirePatch(
@@ -606,5 +609,38 @@ public class CardPatch {
         }
     }
 
+    //修改雷暴效果，与雪暴互斥，增加动画
+    @SpirePatch2(
+            clz= Storm.class,
+            method="use"
+    )
+    public static class ModifyStorm {
+        @SpirePrefixPatch
+        public static SpireReturn<?> ModifyEffect(AbstractPlayer p,AbstractMonster m,AbstractCard __instance)
+        {
+            if(AbstractDungeon.player.hasPower("SuperRobot:SnowStorm"))
+                AbstractDungeon.actionManager.addToBottom(new RemoveWeatherAction(p,p,"SuperRobot:SnowStorm"));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StormPower(p, __instance.magicNumber), __instance.magicNumber));
+
+            CardCrawlGame.sound.play("ORB_LIGHTNING_EVOKE");
+            AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.YELLOW, true));
+            AbstractDungeon.effectsQueue.add(new WeatherEffect("Storm"));
+
+            return SpireReturn.Return();
+        }
+    }
+
+    //加强雷霆打击，改为2费
+    @SpirePatch(
+            clz= ThunderStrike.class,
+            method="<ctor>"
+    )
+    public static class ModifyThunderStrike {
+        @SpirePostfixPatch
+        public static void ModifyEffect(AbstractCard __instance)
+        {
+            __instance.cost = __instance.costForTurn = 2;
+        }
+    }
 
 }

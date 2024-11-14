@@ -8,8 +8,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
 public class OrbPatch {
-    //修改闪电充能球，在拥有雷暴能力时基础和被动伤害+雷暴层数
-    //todo 修改冰霜充能球，在拥有雪暴能力时基础和被动格挡+雪暴层数
     @SpirePatch(
             clz= AbstractOrb.class,
             method="applyFocus"

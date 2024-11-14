@@ -1,8 +1,10 @@
 package SuperRobot.cards;
 
 import SuperRobot.actions.RemoveWeatherAction;
+import SuperRobot.effect.WeatherEffect;
 import SuperRobot.powers.SnowStormPower;
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -13,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 
 public class SnowStorm extends CustomCard {
     public static final String ID = "SuperRobot:Snow Storm";
@@ -42,8 +45,11 @@ public class SnowStorm extends CustomCard {
             this.addToBot(new RemoveWeatherAction(p,p,"Storm"));
         this.addToBot(new ApplyPowerAction(p, p, new SnowStormPower(p, this.magicNumber), this.magicNumber));
 
+        CardCrawlGame.sound.play("STANCE_ENTER_CALM");
+        AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.SKY, true));
+        AbstractDungeon.effectsQueue.add(new WeatherEffect("SuperRobot:SnowStorm"));
+
         if(!this.upgraded){
-            //MakeTempCardInDrawPileAction(AbstractCard card, int amount, boolean shuffleInto, boolean autoPosition)
             this.addToBot(new MakeTempCardInDrawPileAction(new WeatherTransform(), 1,true,true,false));
         }
         else{

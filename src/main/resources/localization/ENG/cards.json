@@ -82,8 +82,8 @@
   },
   "SuperRobot:Machine Awakening": {
     "NAME": "Machine Awakening",
-    "DESCRIPTION": "Ethereal. NL Lost all Machine Learning. At the end of your turn, the AI will channel N random orbs according to your situation. N equals your current max Orb slots/2.",
-    "UPGRADE_DESCRIPTION": "Lost all Machine Learning. At the end of your turn, the AI will channel N random orbs according to your situation. N equals your current max Orb slots/2."
+    "DESCRIPTION": "Ethereal. NL Lost all Machine Learning. Gain an equivalent amount of Focus. At the end of your turn, the AI will channel N random orbs according to your situation. N equals your current max Orb slots/2.",
+    "UPGRADE_DESCRIPTION": "Lost all Machine Learning. Gain an equivalent amount of Focus. At the end of your turn, the AI will channel N random orbs according to your situation. N equals your current max Orb slots/2."
   },
   "Recycle": {
     "NAME": "Recycle",
@@ -96,7 +96,7 @@
   },
   "SuperRobot:Weather Transform": {
     "NAME": "Weather Transform",
-    "DESCRIPTION": "Transform your Weather. NL If Exhausted, Clear Up."
+    "DESCRIPTION": "Transform your Weather. NL If Exhausted, ClearUp."
   },
   "Storm": {
     "NAME": "Storm",

@@ -50,22 +50,4 @@ public class SetupPatch {
         }
     }
 
-
-
-
-    //todo 修改Defect的NAMES属性，覆盖Defect的静态代码块（不知道为什么静态代码块读取的NAMES名没有改变界面上的显示）
-    /*@SpirePatch(
-            clz= Defect.class,
-            method="<ctor>"
-    )
-    public static class modifyNames
-    {
-        @SpirePostfixPatch
-        public static void ModifyEffect(Defect __instance){
-            __instance.NAMES=((CharacterStrings)ReflectionHacks.getPrivateStatic(Defect.class,"characterStrings")).NAMES;
-        }
-    }*/
-
-
-
 }

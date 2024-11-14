@@ -46,7 +46,8 @@ public class MultiProgramAction extends AbstractGameAction {
         }
 
         if (effect > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, -focusEffect), -focusEffect));
+            if(focusEffect>0)
+                this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, -focusEffect), -focusEffect));
             this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
             this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
 
