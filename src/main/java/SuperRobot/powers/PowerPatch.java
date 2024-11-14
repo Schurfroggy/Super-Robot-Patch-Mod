@@ -104,8 +104,23 @@ public class PowerPatch {
     )
     public static class ModifyAmplifyPowerAtEndOfTurn {
         @SpirePrefixPatch
-        public static SpireReturn<?> Replace(boolean isPlayer)
+        public static SpireReturn<?> ModifyEffect(boolean isPlayer)
         {
+            return SpireReturn.Return();
+        }
+    }
+
+    //修改雷暴表述
+    @SpirePatch2(
+            clz= StormPower.class,
+            method="updateDescription"
+    )
+    public static class ModifyStormPowerDescription {
+        @SpirePrefixPatch
+        public static SpireReturn<?> ModifyEffect(AbstractPower __instance)
+        {
+            String[] DESCRIPTIONS = ((PowerStrings)ReflectionHacks.getPrivateStatic(StormPower.class, "powerStrings")).DESCRIPTIONS;
+            __instance.description = DESCRIPTIONS[0] + __instance.amount + DESCRIPTIONS[1] + __instance.amount + DESCRIPTIONS[2];
             return SpireReturn.Return();
         }
     }

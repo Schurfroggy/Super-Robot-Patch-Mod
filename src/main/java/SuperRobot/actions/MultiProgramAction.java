@@ -26,12 +26,13 @@ public class MultiProgramAction extends AbstractGameAction {
     @Override
     public void update() {
         int effect = EnergyPanel.totalCount;
+        int focusEffect=0;
         if (this.energyOnUse != -1) {
             effect = this.energyOnUse;
         }
 
         if (this.upgraded) {
-            effect*=2;
+            effect+=1;
         }
 
         if (this.p.hasRelic("Chemical X")) {
@@ -39,8 +40,13 @@ public class MultiProgramAction extends AbstractGameAction {
             this.p.getRelic("Chemical X").flash();
         }
 
+        if(this.p.hasPower("Bias")){
+            if(this.p.hasPower("Focus"))
+                focusEffect=(Math.min(effect, this.p.getPower("Focus").amount));
+        }
+
         if (effect > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, -effect), -effect));
+            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, -focusEffect), -focusEffect));
             this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
             this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect), effect, true, AbstractGameAction.AttackEffect.NONE));
 

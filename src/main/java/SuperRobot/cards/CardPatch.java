@@ -1,6 +1,7 @@
 package SuperRobot.cards;
 
 import SuperRobot.actions.MultiProgramAction;
+import SuperRobot.actions.NewRecycleAction;
 import SuperRobot.powers.MachineLearningPower;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
@@ -22,7 +23,7 @@ import javassist.*;
 
 public class CardPatch {
     //增强barrage，初始伤害变为6点，升级后变为8点
-    @SpirePatch(
+    /*@SpirePatch(
             clz= Barrage.class,
             method="<ctor>"
     )
@@ -32,7 +33,7 @@ public class CardPatch {
         {
             __instance.baseDamage = 6;
         }
-    }
+    }*/
 
     //增强claw，升级后所有claw牌增加3点伤害（而不是两点）
     @SpirePatch(
@@ -51,13 +52,27 @@ public class CardPatch {
         }
     }
 
-    //增强beam cell，同时给予一层虚弱，升级后变为两层虚弱
+    //增强beam cell，同时给予一层虚弱，升级后变为两层虚弱，改为蓝卡
+
+    @SpirePatch(
+            clz= BeamCell.class,
+            method="<ctor>"
+    )
+    public static class UseBeamCell {
+        @SpirePostfixPatch
+        public static void modifyEffect(AbstractCard __instance)
+        {
+            __instance.rarity=AbstractCard.CardRarity.UNCOMMON;
+        }
+    }
+
+
     @SpirePatch(
             clz= BeamCell.class,
             method="use",
             paramtypez={AbstractPlayer.class, AbstractMonster.class}
     )
-    public static class UseBeamCell {
+    public static class UseBeamCell1 {
         @SpirePostfixPatch
         public static void modifyEffect(AbstractCard __instance,AbstractPlayer p, AbstractMonster m)
         {
@@ -66,7 +81,7 @@ public class CardPatch {
     }
 
     //增强go for the eyes，同时提升自身1层敏捷
-    @SpirePatch(
+    /*@SpirePatch(
             clz= GoForTheEyes.class,
             method="use"
     )
@@ -77,14 +92,14 @@ public class CardPatch {
             if(m != null && m.getIntentBaseDmg() >= 0)
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, 1), 1, true, AbstractGameAction.AttackEffect.NONE));
         }
-    }
+    }*/
 
     //增强steam barrier，修改基础格挡为8点
     @SpirePatch(
             clz= SteamBarrier.class,
             method="<ctor>"
     )
-    public static class ReplaceSteam {
+    public static class ModifySteam {
         @SpirePostfixPatch
         public static void modifyBlock(AbstractCard __instance)
         {
@@ -121,7 +136,7 @@ public class CardPatch {
         }
     }
 
-    //增强hello world，升级后费用变为零,你好世界发出的牌首轮为零费
+    //增强hello world，升级后费用变为零，你好世界发出的牌首轮为零费
     @SpirePatch(
             clz= HelloWorld.class,
             method="upgrade"
@@ -242,7 +257,7 @@ public class CardPatch {
     }
 
     //增强混沌，基础生成两个，升级后生成三个
-    @SpirePatch2(
+    /*@SpirePatch2(
             clz=Chaos.class,
             method="<ctor>"
     )
@@ -266,7 +281,7 @@ public class CardPatch {
         {
             AbstractDungeon.actionManager.addToBottom(new ChannelAction(AbstractOrb.getRandomOrb(true)));
         }
-    }
+    }*/
 
     //增强聚变，增加抽二效果
     @SpirePatch2(
@@ -281,7 +296,7 @@ public class CardPatch {
         }
     }
 
-    //增强auto shield，球未满时额外提供5格挡，升级后额外提供7格挡
+    //增强auto shield，球未满时额外提供3格挡，升级后额外提供5格挡
     @SpirePatch(
             clz= AutoShields.class,
             method="<ctor>"
@@ -290,7 +305,7 @@ public class CardPatch {
         @SpirePostfixPatch
         public static void modifyEffect(AbstractCard __instance)
         {
-            __instance.baseMagicNumber = 5;
+            __instance.baseMagicNumber = 3;
             __instance.magicNumber=__instance.baseMagicNumber;
         }
     }
@@ -318,7 +333,7 @@ public class CardPatch {
         )
         public static void modifyEffect(AbstractCard __instance)
         {
-            __instance.baseMagicNumber = 7;
+            __instance.baseMagicNumber = 5;
             __instance.magicNumber=__instance.baseMagicNumber;
             __instance.upgradedMagicNumber = true;
         }
@@ -474,7 +489,7 @@ public class CardPatch {
             method="use"
     )*/
 
-    //修改重编程，改为多重编程，消耗，耗X费，降低X点集中，提升X点力量和敏捷，升级后全部变为2X
+    //修改重编程，改为多重编程，消耗，耗X费，降低X点集中，提升X点力量和敏捷，升级后全部变为X+1，变为金卡
     @SpirePatch(
             clz= Reprogram.class,
             method="<ctor>"
@@ -485,6 +500,7 @@ public class CardPatch {
         {
             __instance.cost = -1;
             __instance.exhaust=true;
+            __instance.rarity=AbstractCard.CardRarity.RARE;
         }
     }
 
@@ -576,12 +592,19 @@ public class CardPatch {
         }
     }
 
-
-
-
-
-
-
+    //修改回收，回收效果对噩梦回响形态无效
+    @SpirePatch(
+            clz= Recycle.class,
+            method="use"
+    )
+    public static class ModifyRecycle {
+        @SpirePrefixPatch
+        public static SpireReturn<?> ModifyEffect()
+        {
+            AbstractDungeon.actionManager.addToBottom(new NewRecycleAction());
+            return SpireReturn.Return();
+        }
+    }
 
 
 }

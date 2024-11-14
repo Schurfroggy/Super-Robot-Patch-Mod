@@ -25,7 +25,7 @@
   "SuperRobot:Machine": {
     "NAME": "Machine Learning",
     "DESCRIPTIONS": [
-      "At the end of your turn, the AI will adjust the parameters based on your state to channel 1 random Orb. #b",
+      "At the end of your turn, the AI will adjust the parameters based on your situation to channel 1 random Orb. #b",
       " times in total."
     ]
   },
@@ -46,6 +46,22 @@
   },
   "SuperRobot:Machine Awakening Power": {
     "NAME": "Machine Awakening",
-    "DESCRIPTION": "At the end of your turn, the AI will channel many random Orb according to your status and max orbs."
+    "DESCRIPTIONS": ["At the end of your turn, the AI will channel N random Orbs according to your situation. N equals the amount of max Orb slots/2 when you have this power."]
+  },
+  "SuperRobot:SnowStorm": {
+    "NAME": "Weather:Snow Storm",
+    "DESCRIPTIONS": [
+      "All #yFrost effectiveness increase #b ",
+      " .Whenever you play a #yPower card, #yChannel #b",
+      " #yFrost. #yLightning effectiveness decrease. AI now prefers to #yChannel #yFrost."
+    ]
+  },
+  "Storm": {
+    "NAME": "Storm",
+    "DESCRIPTIONS": [
+      "All #yLightning effectiveness increase #b ",
+      " .Whenever you play a #yPower card, #yChannel #b",
+      " #yLightning. #yFrost effectiveness decrease. AI now prefers to #yChannel #yLightning."
+    ]
   }
 }

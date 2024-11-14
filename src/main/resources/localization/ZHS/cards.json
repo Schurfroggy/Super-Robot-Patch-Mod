@@ -1,15 +1,11 @@
 {
-  "Dualcast": {
+  "SuperRobot:NewDualcast": {
     "NAME": "双重释放",
-    "DESCRIPTION": "激发 你最右侧的充能球!M!次。"
+    "DESCRIPTION": "造成 1 点伤害。 NL 激发 你最右侧的充能球2次。"
   },
   "Beam Cell": {
     "NAME": "光束射线",
     "DESCRIPTION": "造成 !D! 点伤害。 NL 给予 !M! 层 虚弱 和 易伤 。"
-  },
-  "Go for the Eyes": {
-    "NAME": "眼部攻击",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果目标敌人的意图是攻击，则给予其 !M! 层 虚弱 ，并获得 1 点 敏捷 。"
   },
   "Conserve Battery": {
     "NAME": "充电",
@@ -63,7 +59,7 @@
   "Reprogram": {
     "NAME": "多重编程",
     "DESCRIPTION": "失去X点 集中 。 NL 获得X点 力量 。 NL 获得X点 敏捷 。 NL 消耗 。",
-    "UPGRADE_DESCRIPTION": "失去2X点 集中 。 NL 获得2X点 力量 。 NL 获得2X点 敏捷 。 NL 消耗 。"
+    "UPGRADE_DESCRIPTION": "失去X+1点 集中 。 NL 获得X+1点 力量 。 NL 获得X+1点 敏捷 。 NL 消耗 。"
   },
   "Creative AI": {
     "NAME": "创造性AI",
@@ -86,7 +82,25 @@
   },
   "SuperRobot:Machine Awakening": {
     "NAME": "机器觉醒",
-    "DESCRIPTION": "失去所有的 机器学习 ，获得双倍的 集中 。每回合结束时根据AI结果 生成 充能球上限数量的充能球。 NL 虚无 。",
-    "UPGRADE_DESCRIPTION": "失去所有的 机器学习 ，获得双倍的 集中 。每回合结束时根据AI结果 生成 充能球上限数量的充能球。"
+    "DESCRIPTION": "失去所有的 机器学习 。每回合结束时根据AI结果 生成 当前充能球上限数量一半的充能球。 NL 虚无 。",
+    "UPGRADE_DESCRIPTION": "失去所有的 机器学习 。每回合结束时根据AI结果 生成 当前充能球上限数量一半的充能球。"
+  },
+  "Recycle": {
+    "NAME": "回收",
+    "DESCRIPTION": "消耗 一张牌。 NL 获得与其耗能相等的 [B] 。 NL 对噩梦回响形态无效。"
+  },
+  "SuperRobot:Snow Storm": {
+    "NAME": "雪暴",
+    "DESCRIPTION": "进入 雪暴 天气 。 NL 你每打出一张能力牌， 生成 1 个 冰霜 充能球。 NL 将一张 *天气转换 放入你的抽牌堆。",
+    "UPGRADE_DESCRIPTION": " NL 进入 雪暴 天气 。 NL 你每打出一张能力牌， 生成 1 个 冰霜 充能球。 NL 将一张 *天气转换+ 放入你的抽牌堆。"
+  },
+  "SuperRobot:Weather Transform": {
+    "NAME": "天气转换",
+    "DESCRIPTION": "转换 天气 。 NL 被 消耗 时， 放晴 。"
+  },
+  "Storm": {
+    "NAME": "雷暴",
+    "DESCRIPTION": "进入 雷暴 天气 。 NL 你每打出一张能力牌， 生成 1 个 闪电 充能球。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 进入 雷暴 天气 。 NL 你每打出一张能力牌， 生成 1 个 闪电 充能球。"
   }
 }

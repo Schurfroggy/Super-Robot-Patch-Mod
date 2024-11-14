@@ -1,13 +1,12 @@
-package SuperRobot.patches;
+package SuperRobot.setupPatches;
 
-import basemod.ReflectionHacks;
+import com.evacipated.cardcrawl.modthespire.lib.ByRef;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.characters.Defect;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.relics.FrozenCore;
-import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import java.util.ArrayList;
 
@@ -22,14 +21,37 @@ public class SetupPatch {
     )
     public static class getStartingRelics
     {
-        public static ArrayList<String> Replace()
+
+        @SpireInsertPatch(
+                rloc=2,
+                localvars={"retVal"}
+        )
+        public static void ModifyRelics(ArrayList<String> retVal)
         {
-            ArrayList<String> retVal = new ArrayList<>();
-            retVal.add("Cracked Core");
             retVal.add(FrozenCore.ID);
-            return retVal;
         }
     }
+
+    //替换双放卡
+    @SpirePatch(
+            clz= Defect.class,
+            method="getStartingDeck"
+    )
+    public static class getStartingDeck
+    {
+        @SpireInsertPatch(
+                rloc=11,
+                localvars={"retVal"}
+        )
+        public static void ModifyDeck(ArrayList<String> retVal)
+        {
+            retVal.remove("Dualcast");
+            retVal.add("SuperRobot:NewDualcast");
+        }
+    }
+
+
+
 
     //todo 修改Defect的NAMES属性，覆盖Defect的静态代码块（不知道为什么静态代码块读取的NAMES名没有改变界面上的显示）
     /*@SpirePatch(

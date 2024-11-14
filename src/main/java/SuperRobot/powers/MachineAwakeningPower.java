@@ -18,6 +18,7 @@ public class MachineAwakeningPower extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     private static final String NAME = powerStrings.NAME;
     private static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private final int times;
     private final double[] weights=new double[4];
     private final double[] flags=new double[4];
     private int lastHealth = 0;
@@ -49,6 +50,8 @@ public class MachineAwakeningPower extends AbstractPower {
         flags[1]=1.0;
         flags[2]=1.0;
         flags[3]=1.0;
+
+        times=AbstractDungeon.player.maxOrbs/2;
     }
 
     public void updateDescription(){
@@ -56,8 +59,7 @@ public class MachineAwakeningPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer){
-        int maxOrbs= AbstractDungeon.player.maxOrbs;
-        for(int i=0;i<maxOrbs;i++){
+        for(int i=0;i<times;i++){
             calculateWeight();
             switch (chooseBall()){
                 case 0:{
@@ -127,6 +129,10 @@ public class MachineAwakeningPower extends AbstractPower {
         }else{
             weights[3]-=0.25;
         }
+        if(p.hasPower("Storm"))
+            weights[0]+=1.0;
+        if(p.hasPower("SuperRobot:SnowStorm"))
+            weights[1]+=1.0;
         this.lastHealth=p.currentHealth;
     }
 

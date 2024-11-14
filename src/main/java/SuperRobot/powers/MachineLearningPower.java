@@ -140,6 +140,10 @@ public class MachineLearningPower extends AbstractPower {
         }else{
             weights[3]-=0.25;
         }
+        if(p.hasPower("Storm"))
+            weights[0]+=1.0;
+        if(p.hasPower("SuperRobot:SnowStorm"))
+            weights[1]+=1.0;
         this.lastHealth=p.currentHealth;
         this.lastDamage+=p.damagedThisCombat;
     }

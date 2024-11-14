@@ -1,15 +1,11 @@
 {
-  "Dualcast": {
+  "SuperRobot:NewDualcast": {
     "NAME": "Dualcast",
-    "DESCRIPTION": "Evoke your next Orb !M! times."
+    "DESCRIPTION": "Deal 1 damage. NL Evoke your next Orb 2 times."
   },
   "Beam Cell": {
     "NAME": "Beam Cell",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable and Weak."
-  },
-  "Go for the Eyes": {
-    "NAME": "Go for the Eyes",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy intends to attack, apply !M! Weak and gain 1 Dexterity."
   },
   "Conserve Battery": {
     "NAME": "Charge Battery",
@@ -51,24 +47,24 @@
     "DESCRIPTION": "If you have no Block, gain !B! Block. NL If you have empty orbs, gain extra !M! Block."
   },
   "Echo Form": {
-    "NAME": "Nightmare Echo Form",
-    "DESCRIPTION": "Ethereal. NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [G] NL for each time this card is played or exhausted.",
-    "UPGRADE_DESCRIPTION": " NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [G] NL for each time this card is played or exhausted."
+    "NAME": "Nightmare Echo",
+    "DESCRIPTION": "Ethereal. NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [B] NL for each time this card is played or exhausted.",
+    "UPGRADE_DESCRIPTION": " NL No escape from this Card. NL The first card you play each turn is played twice. Costs 1 additional [B] NL for each time this card is played or exhausted."
   },
   "Rainbow": {
     "NAME": "Rainbow",
-    "DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain !M! Orb slots. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain !M! Orb slots. NL Exhaust."
+    "DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain 1 Orb slots. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Channel 1 Lightning. NL Channel 1 Frost. NL Channel 1 Dark. NL Gain 1 Orb slots. NL Exhaust."
   },
   "Reprogram": {
     "NAME": "Multi-Program",
     "DESCRIPTION": "Lose X Focus. NL Gain X Strength. NL Gain X Dexterity. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Lose 2X Focus. NL Gain 2X Strength. NL Gain 2X Dexterity. NL Exhaust."
+    "UPGRADE_DESCRIPTION": "Lose X+1 Focus. NL Gain X+1 Strength. NL Gain X+1 Dexterity. NL Exhaust."
   },
   "Creative AI": {
     "NAME": "Creative AI",
-    "DESCRIPTION": "At the start of your turn, add #b1 of #b3 random #yPower cards and add the chosen card into your hand.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, add #b1 of #b3 random #yPower cards and add the chosen card into your hand."
+    "DESCRIPTION": "At the start of your turn, add 1 of 3 random Power cards and add the chosen card into your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, add 1 of 3 random Power cards and add the chosen card into your hand."
   },
   "Machine Learning": {
     "NAME": "Machine Learning",
@@ -86,7 +82,25 @@
   },
   "SuperRobot:Machine Awakening": {
     "NAME": "Machine Awakening",
-    "DESCRIPTION": "Ethereal. NL Lost all Machine Learning, gain double Focus. At the end of your turn, the AI will channel many random Orb according to your status and max orbs.",
-    "UPGRADE_DESCRIPTION": "Lost all Machine Learning, gain double Focus. At the end of your turn, the AI will channel many random Orb according to your status and max orbs."
+    "DESCRIPTION": "Ethereal. NL Lost all Machine Learning. At the end of your turn, the AI will channel N random orbs according to your situation. N equals your current max Orb slots/2.",
+    "UPGRADE_DESCRIPTION": "Lost all Machine Learning. At the end of your turn, the AI will channel N random orbs according to your situation. N equals your current max Orb slots/2."
+  },
+  "Recycle": {
+    "NAME": "Recycle",
+    "DESCRIPTION": "Exhaust a card. NL Gain [B] equal to its cost. NL Invalid for Nightmare Echo."
+  },
+  "SuperRobot:Snow Storm": {
+    "NAME": "Snow Storm",
+    "DESCRIPTION": "Get into Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Enter the Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform+ into your draw pile."
+  },
+  "SuperRobot:Weather Transform": {
+    "NAME": "Weather Transform",
+    "DESCRIPTION": "Transform your Weather. NL If Exhausted, Clear Up."
+  },
+  "Storm": {
+    "NAME": "Storm",
+    "DESCRIPTION": "Get into Storm Weather. NL Whenever you play a Power card, Channel 1 Lightning.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Get into Storm Weather. NL Whenever you play a Power card, Channel 1 Lightning."
   }
 }

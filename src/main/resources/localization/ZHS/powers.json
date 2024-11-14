@@ -46,6 +46,22 @@
   },
   "SuperRobot:Machine Awakening Power": {
     "NAME": "机器觉醒",
-    "DESCRIPTION": "每回合结束时根据AI结果生成充能球上限数量的充能球。"
+    "DESCRIPTIONS": ["每回合结束时根据AI结果生成拥有此能力时充能球上限数量一半的充能球。"]
+  },
+  "SuperRobot:SnowStorm": {
+    "NAME": "天气：雪暴",
+    "DESCRIPTIONS": [
+      "所有 #y冰霜 充能球的效果增加 #b ",
+      " 。你每打出一张 #b能力牌 ， #y生成 #b ",
+      " 个 #y冰霜 充能球。 #y闪电 充能球的效果削弱。AI更倾向于 #y生成 #y冰霜 充能球。"
+    ]
+  },
+  "Storm": {
+    "NAME": "天气：雷暴",
+    "DESCRIPTIONS": [
+      "所有 #y闪电 充能球的效果增加 #b ",
+      " 。你每打出一张 #b能力牌 ， #y生成 #b ",
+      " 个 #y闪电 充能球。 #y冰霜 充能球的效果削弱。AI更倾向于 #y生成 #y闪电 充能球。"
+    ]
   }
 }
