@@ -36,7 +36,11 @@ public class RelicPatch {
         @SpirePrefixPatch
         public static SpireReturn<?> ModifyEffecct(AbstractRelic __instance)
         {
-            if (AbstractDungeon.player.hasEmptyOrb()&&!AbstractDungeon.player.hasPower("Focus")) {
+            if (AbstractDungeon.player.hasEmptyOrb()) {
+                if(AbstractDungeon.player.hasPower("Focus")){
+                    if(AbstractDungeon.player.getPower("Focus").amount>0)
+                        return SpireReturn.Return();
+                }
                 __instance.flash();
                 AbstractDungeon.player.channelOrb(new Frost());
             }

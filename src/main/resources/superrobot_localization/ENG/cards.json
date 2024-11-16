@@ -92,7 +92,7 @@
   "SuperRobot:Snow Storm": {
     "NAME": "Snow Storm",
     "DESCRIPTION": "Get into Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform into your draw pile.",
-    "UPGRADE_DESCRIPTION": "Get into the Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform+ into your draw pile."
+    "UPGRADE_DESCRIPTION": "Get into Snowstorm Weather. NL Whenever you play a Power card, Channel 1 Frost. NL Put a *Weather *Transform+ into your draw pile."
   },
   "SuperRobot:Weather Transform": {
     "NAME": "Weather Transform",

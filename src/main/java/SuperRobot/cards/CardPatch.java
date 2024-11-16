@@ -371,7 +371,7 @@ public class CardPatch {
         @SpirePostfixPatch
         public static void modifyEffect(AbstractCard __instance)
         {
-            __instance.cost=__instance.costForTurn=1;
+            __instance.cost=__instance.costForTurn=2;
         }
     }
 
@@ -640,6 +640,28 @@ public class CardPatch {
         public static void ModifyEffect(AbstractCard __instance)
         {
             __instance.cost = __instance.costForTurn = 2;
+        }
+    }
+
+    //修改hyberbeam，在有偏差时无法让集中变为负数
+    @SpirePatch2(
+            clz=Hyperbeam.class,
+            method="use"
+    )
+    public static class ModifyHyperbeam {
+        @SpireInsertPatch(
+                rloc=3
+        )
+        public static SpireReturn<?> ModifyEffect(AbstractPlayer p,AbstractMonster m,AbstractCard __instance)
+        {
+            int amount=0;
+            if(AbstractDungeon.player.hasPower("Bias")){
+                if(AbstractDungeon.player.hasPower("Focus"))
+                    amount= Math.min(AbstractDungeon.player.getPower("Focus").amount, __instance.magicNumber);
+            }
+            if(amount>0)
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FocusPower(p, -amount), -amount));
+            return SpireReturn.Return();
         }
     }
 

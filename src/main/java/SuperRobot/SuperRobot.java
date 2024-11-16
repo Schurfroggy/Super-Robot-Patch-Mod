@@ -6,7 +6,6 @@ import basemod.BaseMod;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
-import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -15,7 +14,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 
 @SpireInitializer
-public class SuperRobot implements  EditStringsSubscriber,EditCardsSubscriber, EditKeywordsSubscriber {
+public class SuperRobot implements  EditStringsSubscriber,EditCardsSubscriber, EditKeywordsSubscriber{
     public SuperRobot(){
         BaseMod.subscribe(this);
     }
@@ -33,10 +32,10 @@ public class SuperRobot implements  EditStringsSubscriber,EditCardsSubscriber, E
         } else {
             lang = "ENG";
         }
-        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/" + lang + "/cards.json");
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/" + lang + "/relics.json");
-        BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/" + lang + "/powers.json");
-        BaseMod.loadCustomStringsFile(CharacterStrings.class, "localization/" + lang + "/characters.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "superrobot_localization/" + lang + "/cards.json");
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "superrobot_localization/" + lang + "/relics.json");
+        BaseMod.loadCustomStringsFile(PowerStrings.class, "superrobot_localization/" + lang + "/powers.json");
+        BaseMod.loadCustomStringsFile(CharacterStrings.class, "superrobot_localization/" + lang + "/characters.json");
     }
 
     @Override
