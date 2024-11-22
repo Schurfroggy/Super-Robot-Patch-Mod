@@ -44,6 +44,7 @@ public class MultiProgramAction extends AbstractGameAction {
             if(this.p.hasPower("Focus"))
                 focusEffect=(Math.min(effect, this.p.getPower("Focus").amount));
         }
+        else focusEffect=effect;
 
         if (effect > 0) {
             if(focusEffect>0)

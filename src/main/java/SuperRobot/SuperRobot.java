@@ -45,6 +45,7 @@ public class SuperRobot implements  EditStringsSubscriber,EditCardsSubscriber, E
         BaseMod.addCard(new MachineAwakening());
         BaseMod.addCard(new SnowStorm());
         BaseMod.addCard(new WeatherTransform());
+        BaseMod.addCard(new RobotVault());
     }
 
 
@@ -56,5 +57,7 @@ public class SuperRobot implements  EditStringsSubscriber,EditCardsSubscriber, E
         BaseMod.addKeyword("天气",new String[]{"天气"},"你只能同时拥有一种天气。天气会增加或削弱特定充能球的效果。");
         BaseMod.addKeyword("Clear Up",new String[]{"clear","up"},"Become sunny:)");
         BaseMod.addKeyword("放晴",new String[]{"放晴"},"退出所有天气。");
+        BaseMod.addKeyword("Deep Sleep",new String[]{"deep","sleep"},"All the damage you cause is reduced to 1 when your fell asleep. Wake up in new round.");
+        BaseMod.addKeyword("沉睡",new String[]{"沉睡"},"沉睡状态下，你所有的攻击伤害降低为1点。新的回合开始时苏醒。");
     }
 }

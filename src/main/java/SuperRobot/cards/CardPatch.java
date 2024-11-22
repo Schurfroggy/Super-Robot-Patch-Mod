@@ -5,7 +5,6 @@ import SuperRobot.actions.NewRecycleAction;
 import SuperRobot.actions.RemoveWeatherAction;
 import SuperRobot.effect.WeatherEffect;
 import SuperRobot.powers.MachineLearningPower;
-import SuperRobot.powers.SnowStormPower;
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.*;
@@ -21,25 +20,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import javassist.*;
 
 public class CardPatch {
-    //增强barrage，初始伤害变为6点，升级后变为8点
-    /*@SpirePatch(
-            clz= Barrage.class,
-            method="<ctor>"
-    )
-    public static class ReplaceBarrage {
-        @SpirePostfixPatch
-        public static void modifyDamage(AbstractCard __instance)
-        {
-            __instance.baseDamage = 6;
-        }
-    }*/
 
     //增强claw，升级后所有claw牌增加3点伤害（而不是两点）
     @SpirePatch(
@@ -362,7 +348,7 @@ public class CardPatch {
         }
     }
 
-    //修改回响形态，这张牌改为无法被逃脱，每被打出或消耗一次增加一费，初始为一费，升级后取消虚无
+    //修改回响形态，这张牌改为无法被逃脱，每被打出或消耗一次增加一费，初始为二费，升级后取消虚无
     @SpirePatch(
             clz= EchoForm.class,
             method="<ctor>"
@@ -659,6 +645,7 @@ public class CardPatch {
                 if(AbstractDungeon.player.hasPower("Focus"))
                     amount= Math.min(AbstractDungeon.player.getPower("Focus").amount, __instance.magicNumber);
             }
+            else amount=__instance.magicNumber;
             if(amount>0)
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FocusPower(p, -amount), -amount));
             return SpireReturn.Return();

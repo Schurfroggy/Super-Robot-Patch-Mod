@@ -105,15 +105,17 @@ public class MachineAwakeningPower extends AbstractPower {
     private void  calculateWeight(){
         AbstractPlayer p= AbstractDungeon.player;
         if(p.currentHealth<lastHealth){
-            weights[0]-=0.5;
-            weights[1]+=0.5;
-            weights[2]-=0.5;
+            weights[0]-=0.25;
+            weights[1]+=0.25;
+            weights[2]-=0.25;
         }
+        if((double)p.currentHealth<0.3*(double)p.maxHealth)
+            weights[1]+=0.25;
         if(p.currentBlock>10)
             weights[1]+=0.25;
         if(p.currentBlock>=30)
             weights[1]-=1.0;
-        if(p.hasPower("Focus")){
+        if(p.hasPower("Focus")&&p.getPower("Focus").amount>0){
             weights[0]+=0.25;
             weights[1]+=0.5;
             weights[2]-=0.5;

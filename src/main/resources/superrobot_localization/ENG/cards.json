@@ -102,5 +102,9 @@
     "NAME": "Storm",
     "DESCRIPTION": "Get into Storm Weather. NL Whenever you play a Power card, Channel 1 Lightning.",
     "UPGRADE_DESCRIPTION": "Innate. NL Get into Storm Weather. NL Whenever you play a Power card, Channel 1 Lightning."
+  },
+  "SuperRobot:Robot Vault": {
+    "NAME": "Defect Vault",
+    "DESCRIPTION": "Take an extra turn after this one. NL Deep sleep in your new round. NL End your turn. NL Exhaust."
   }
 }

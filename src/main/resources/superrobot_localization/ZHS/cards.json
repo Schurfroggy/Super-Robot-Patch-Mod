@@ -102,5 +102,9 @@
     "NAME": "雷暴",
     "DESCRIPTION": "进入 雷暴 天气 。 NL 你每打出一张能力牌， 生成 1 个 闪电 充能球。",
     "UPGRADE_DESCRIPTION": "固有 。 NL 进入 雷暴 天气 。 NL 你每打出一张能力牌， 生成 1 个 闪电 充能球。"
+  },
+  "SuperRobot:Robot Vault": {
+    "NAME": "机神腾跃",
+    "DESCRIPTION": "在本回合结束后，额外获得一回合。 NL 结束你的回合。 NL 新的回合开始时进入 沉睡 。 NL 消耗 。"
   }
 }

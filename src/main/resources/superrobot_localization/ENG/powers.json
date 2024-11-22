@@ -63,5 +63,11 @@
       " .Whenever you play a #yPower card, #yChannel #b",
       " #yLightning. #yFrost effectiveness decrease. AI now prefers to #yChannel #yLightning."
     ]
+  },
+  "SuperRobot:Sleep Power": {
+    "NAME": "Deep Sleep",
+    "DESCRIPTIONS": [
+      "All the attack damage you cause is reduced to 1, wake up at the end of this round."
+    ]
   }
 }

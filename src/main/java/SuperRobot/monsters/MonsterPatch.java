@@ -20,9 +20,10 @@ public class MonsterPatch {
         )
         public static SpireReturn<?> ModifyEffect(AbstractMonster __instance)
         {
-            if(AbstractDungeon.player.hasPower("Bias")&&AbstractDungeon.player.hasPower("Focus")&&AbstractDungeon.player.getPower("Focus").amount<0)
+            if(AbstractDungeon.player.hasPower("Bias")&&AbstractDungeon.player.hasPower("Focus")&&AbstractDungeon.player.getPower("Focus").amount<0){
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player,__instance,"Focus"));
-            AbstractDungeon.player.getPower("Bias").flash();
+                AbstractDungeon.player.getPower("Bias").flash();
+            }
             return SpireReturn.Continue();
         }
 }
